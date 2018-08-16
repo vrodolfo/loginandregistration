@@ -1,0 +1,21 @@
+version: "3"
+services:
+  mongo:
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - app-net
+  web:
+    command: npm start
+    build: .
+    depends_on:
+      - mongo
+    ports:
+      - "3000:3000"
+    networks:
+      - app-net
+networks:
+  app-net:
