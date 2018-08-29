@@ -1,13 +1,57 @@
 <html>
   <head>
-    <title>User Page</title>
+      <link rel="icon" href="../mango.png">
+    <title>Operation Mango</title>
+    <script
+   src="https://code.jquery.com/jquery-3.3.1.min.js"
+   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+   crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../style.css" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+
+
+
+     <script>
+     $( document ).ready(function() {
+        console.log( "ready!" );
+        $(".dropdown-trigger").dropdown();
+        $(".dropdown-content>li>a").css("background-color", "#e57373");
+        $(".dropdown-content>li>a").css("color", "white");
+      });
+     </script>
 </head>
   <body>
+      <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#!">Account</a></li>
+        <li class="divider"></li>
+        <li><a href="#!">Users</a></li>
+      </ul>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">
+            <img class="logo-navbar" src="../mango.png" alt="Operation Mango">
+            <p class="logo-nav-text">Operation Mango
+            </p>
+          </a>
+          <ul class="right hide-on-med-and-down">
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">
+              <span>Settings</span>
+              <img class="arrow" src="../scroll-down-arrow-icon.png" alt="Operation Mango">
+            </a></li>
+            <li>
+                <a href="/sessions/delete">
+                  <img class="logout" src="../logout.png" alt="Logout">
+                </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+
     <nav>
       <a href="/users">All Users</a>
-      <form action="/sessions/delete" method="post">
-        <button>Logout</button>
-      </form>
+
     </nav>
 
     <h1><%= user.first_name %>'s Page</h1>

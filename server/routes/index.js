@@ -10,6 +10,7 @@
 
 const users     = require('../controllers/users');
 const sessions  = require('../controllers/sessions');
+const accounts  = require('../controllers/accounts');
 
 module.exports = (app) => {
 
@@ -35,7 +36,14 @@ module.exports = (app) => {
   });
 
   app.post('/sessions', sessions.create);
-  app.post('/sessions/delete', sessions.delete);
+  app.get('/sessions/delete', sessions.delete);
+
+  app.get('/accounts/new', accounts.new);
+
+  app.post('/accounts', function(req, res) {
+    console.log('create account');
+    accounts.create(req, res);
+  });
 
   app.all('**', (req, res) => { res.redirect('/') });
 }

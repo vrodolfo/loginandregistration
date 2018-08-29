@@ -1,0 +1,81 @@
+.container{
+  width: 200px;
+}
+.logo-navbar{
+  width: 60px;
+  height: 60px;
+  margin-left: 50px;
+}
+.login-box{
+  width: 500px;
+  height: 700px;
+  background-color: white;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.registration-box{
+  width: 500px;
+  height: 700px;
+  background-color: white;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+.registration-title{
+  margin: 0 0 0 0;
+}
+
+.logo-text{
+  margin-top: 0;
+  color:#850000;
+}
+
+.logo{
+  width: 200px;
+  height: 200px;
+}
+.logo-create{
+  width: 100px;
+  height: 100px;
+  margin: 0 0 0 0;
+}
+
+.loginpage{
+  /* background-color: #FFCC22 ; */
+   /* background-image: radial-gradient( white , white,  #fdfd96); */
+   /* background-color: whitesmoke; */
+}
+.logout{
+  width: 40px;
+  height: 40px;
+  margin-right: 50px;
+  vertical-align: center;
+  margin-top: 10px;
+}
+.arrow{
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.logo-nav-text{
+  height: 100%;
+  vertical-align: top;
+  margin: 0 0 0 0 ;
+  line-height: 64px;
+  display: inline-block;
+}
+/*  for buttons color #850000 */
+.nav-wrapper {
+    /* background-color: #FFCC22 !important; */
+    /* background-color: #D32F2F !important; */
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0 50px 0 50px;
+  }
+
+.btn{
+  display: inline-block;
+  background-color: #850000 !important;
+}

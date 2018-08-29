@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="loginpage">
+<head>
+  <link rel="icon" href="../mango.png">
+  <title>Login Registration</title>
+  <link rel="stylesheet" href="../style.css" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+
+</head>
+<body>
+  <div class="center-align container">
+
+    <div class='registration-box'>
+      <img class="logo-create" src="../mango.png" alt="Operation Mango">
+      <h1 class="registration-title">Registration</h1>
+      <% if (typeof errs != 'undefined' ) { %>
+          <%= errs %>
+      <% } %>
+      <div class="">
+
+        <form action="/users" method="post">
+          <div class="input-field col s6">
+            <input id="company_name" name="company_name" type="text" class="validate">
+            <label for="company_name">Company Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="first_name" name="first_name" type="text" class="validate">
+            <label for="first_name">First Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="last_name" name="last_name" type="text" class="validate">
+            <label for="last_name">Last Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="username" name="username" type="text" class="validate">
+            <label for="username">Username</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="email" name="email" type="text" class="validate">
+            <label for="email">Email</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="password" name="password" type="password" class="validate">
+            <label for="password">Password</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="password_confirmation" name="password_confirmation" type="password" class="validate">
+            <label for="password_confirmation">Password Confirmation</label>
+          </div>
+
+          <button class="btn waves-effect waves-light"  type="submit">Create Account</button>
+        </form>
+      </div>
+      <br>
+      <div class="">
+        <form class="" action="/" method="get">
+          <button class="btn waves-effect waves-light"  type="submit">Go Back</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
