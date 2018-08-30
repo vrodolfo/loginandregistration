@@ -1,3 +1,25 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  /* background-color: whitesmoke; */
+}
+
+main {
+  flex: 1 0 auto;
+}
+h1, h2, h3{
+  color: #850000;
+  margin: 0 0 0 0;
+}
+.main-container{
+  height: 80%;
+  margin: 0 0 0 100px;
+}
+.errors{
+  color: red;
+}
+
 .container{
   width: 200px;
 }
@@ -43,8 +65,7 @@
 
 .loginpage{
   /* background-color: #FFCC22 ; */
-   /* background-image: radial-gradient( white , white,  #fdfd96); */
-   /* background-color: whitesmoke; */
+   /* background-image: radial-gradient( white , white,  white); */
 }
 .logout{
   width: 40px;
@@ -66,7 +87,7 @@
   line-height: 64px;
   display: inline-block;
 }
-/*  for buttons color #850000 */
+
 .nav-wrapper {
     /* background-color: #FFCC22 !important; */
     /* background-color: #D32F2F !important; */

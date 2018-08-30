@@ -2,23 +2,26 @@ const mongoose  = require('mongoose');
 const bcrypt    = require('bcrypt-as-promised');
 
 var UserSchema = new mongoose.Schema({
-    first_name: {
-        type: String,
-        required: [true, 'First Name is required']
-        },
-    last_name: {
-          type: String,
-          required: [true, 'Last Name is required']
-        },
-    email: {
-          type: String,
-          required: [true, 'Email is required'],
-          unique: [true, 'Email is already taken']
-        },
-    password: {
-          type: String,
-          required: [true, 'Password is required']
-        }
+  first_name: {
+    type: String,
+    required: [true, 'First Name is required']
+  },
+  last_name: {
+    type: String,
+    required: [true, 'Last Name is required']
+  },
+  email: {
+    type: String,
+    required: [true, 'Email is required'],
+    unique: [true, 'Email is already taken']
+  },
+  company_id: {
+    type: String
+  },
+  password: {
+    type: String,
+    required: [true, 'Password is required']
+  }
 }, {timestamps: true });
 
 // Custom Methods

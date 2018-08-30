@@ -35,6 +35,10 @@ module.exports = (app) => {
     users.findUser(req, res);
   });
 
+  app.get('/users/:id/dashboard', function(req, res) {
+    users.dashboard(req, res);
+  });
+
   app.post('/sessions', sessions.create);
   app.get('/sessions/delete', sessions.delete);
 

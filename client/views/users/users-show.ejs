@@ -1,25 +1,22 @@
 <html>
   <head>
-      <link rel="icon" href="../mango.png">
+    <link rel="icon" href="../mango.png">
     <title>Operation Mango</title>
     <script
-   src="https://code.jquery.com/jquery-3.3.1.min.js"
-   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-   crossorigin="anonymous"></script>
+     src="https://code.jquery.com/jquery-3.3.1.min.js"
+     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+     crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../style.css" />
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-
-
-
-     <script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <script>
      $( document ).ready(function() {
         console.log( "ready!" );
         $(".dropdown-trigger").dropdown();
         $(".dropdown-content>li>a").css("background-color", "#e57373");
         $(".dropdown-content>li>a").css("color", "white");
       });
-     </script>
+    </script>
 </head>
   <body>
       <ul id="dropdown1" class="dropdown-content">
@@ -48,18 +45,11 @@
         </div>
       </nav>
 
-
-    <nav>
-      <a href="/users">All Users</a>
-
-    </nav>
-
     <h1><%= user.first_name %>'s Page</h1>
 
     <div class="email">
       Email: <span><%= user.email %></span>
     </div>
-
 
   </body>
 </html>

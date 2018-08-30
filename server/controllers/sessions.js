@@ -14,7 +14,7 @@ module.exports = {
       bcrypt.compare(req.body.password, user.password)
       .then(() => {
         session.user_id = user._id;
-        return res.redirect(`/users/${user._id}`);
+        return res.redirect(`/users/${user._id}/dashboard`);
       })
       .catch(() => {
         let error = [{message: 'Invalid Password'}];
