@@ -14,6 +14,7 @@ module.exports = {
       bcrypt.compare(req.body.password, user.password)
       .then(() => {
         session.user_id = user._id;
+        session.account_id = user.company_id;
         return res.redirect(`/users/${user._id}/dashboard`);
       })
       .catch(() => {
@@ -28,6 +29,9 @@ module.exports = {
     console.log('Logout / Deleting Session')
     if ('user_id' in session) {
       delete session['user_id']
+    }
+    if ('account_id' in session) {
+      delete session['account_id']
     }
     return res.redirect('/');
   }

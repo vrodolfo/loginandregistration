@@ -4,16 +4,46 @@ body {
   flex-direction: column;
   /* background-color: whitesmoke; */
 }
+.scroll-table{
+  overflow-y: scroll ;
+  height: 150px ;
+}
+
+.box-new-users-right{
+  display: inline-block;
+  width: 50%;
+}
+.box-new-users-left{
+  display: inline-block;
+  width: 48%;
+}
+.main-title, .box-title{
+  margin: 0 0 10px 0;
+}
+
 
 main {
   flex: 1 0 auto;
 }
-h1, h2, h3{
+h1, h2, h3, h4, h5{
   color: #850000;
   margin: 0 0 0 0;
 }
+.custom-nav{
+  height: 30px;
+  background-color: #EF9A9A;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+}
+.custom-nav-text{
+  margin: 5px 0 5px 100px;;
+  height: 30px;
+  vertical-align: middle;
+  display: inline-block;
+  color: white;
+
+}
 .main-container{
-  height: 80%;
   margin: 0 0 0 100px;
 }
 .errors{
@@ -99,4 +129,23 @@ h1, h2, h3{
 .btn{
   display: inline-block;
   background-color: #850000 !important;
+}
+
+.my-user-box{
+  display: inline-block;
+  margin: 0 0 0 0;
+  background-color: whitesmoke;
+  width: 30%;
+  height: 500px;
+  vertical-align: top;
+
+}
+.users-box{
+  display: inline-block;
+  margin: 0 0 0 100px;
+  background-color: whitesmoke;
+  width: 60%;
+  height: 500px;
+  vertical-align: top;
+
 }

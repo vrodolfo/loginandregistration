@@ -23,6 +23,11 @@ module.exports = (app) => {
     users.create(req, res);
   });
 
+  app.post('/users/account', function(req, res) {
+    console.log('create user to acc');
+    users.createUsertoAccount(req, res);
+  });
+
   app.get('/users', function(req, res) {
     users.list(req, res);
   });
@@ -33,6 +38,26 @@ module.exports = (app) => {
 
   app.get('/users/:id', function(req, res) {
     users.findUser(req, res);
+  });
+
+  app.get('/users/:id/delete', function(req, res) {
+    users.destroy(req, res);
+  });
+
+  app.get('/accounts/:id/edit', function(req, res) {
+    accounts.edit(req, res);
+  });
+
+  app.post('/users/update', function(req, res) {
+    users.usersUpdate(req, res);
+  });
+
+  app.get('/accounts/:id/users/new', function(req, res) {
+    accounts.usersAll(req, res);
+  });
+
+  app.get('/accounts/users/:id/edit', function(req, res) {
+    accounts.usersEdit(req, res);
   });
 
   app.get('/users/:id/dashboard', function(req, res) {

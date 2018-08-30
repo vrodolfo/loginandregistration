@@ -1,0 +1,214 @@
+<html>
+  <head>
+      <link rel="icon" href="/../mango.png">
+    <title>Operation Mango</title>
+    <script
+   src="https://code.jquery.com/jquery-3.3.1.min.js"
+   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+   crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/../style.css" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+     <script>
+     $( document ).ready(function() {
+        console.log( "ready!" );
+        $(".dropdown-trigger").dropdown();
+        $(".dropdown-content>li>a").css("background-color", "#e57373");
+        $(".dropdown-content>li>a").css("color", "white");
+        $('#editing_user').on('submit', function(e){
+          var form = $(this);
+          var url = form.attr('action');
+          console.log('editing ajax');
+          $.ajax({
+             type: "POST",
+             url: '/users/update',
+             data: form.serialize(),
+             success: function(result)
+             {
+                console.log('editing success');
+                console.log(result);
+                location.reload();
+                alert('User succesfully updated!');
+
+             },
+             error: function (xhr, ajaxOptions, thrownError) {
+               console.log(xhr.status);
+               console.log(thrownError);
+             }
+               });
+
+          e.preventDefault();
+        });
+      });
+
+      function callAjax(id){
+        $.ajax({
+          type: 'GET',
+          url: '/users/'+id,
+          success: function(result) {
+            console.log(result);
+            $('#first_name').val(result.first_name);
+            $('#first_name').focus();
+            $('#last_name').val(result.last_name);
+            $('#last_name').focus();
+            $('#username').val(result.username);
+            $('#username').focus();
+            $('#email').val(result.email);
+            $('#email').focus();
+            $('#username_title').html(result.username);
+            $('#user_id').val(result._id);
+          },
+          error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status);
+            console.log(thrownError);
+          }
+        });
+      }
+     </script>
+</head>
+  <body>
+      <ul id="dropdown1" class="dropdown-content">
+        <li><a href="/accounts/<%= account.id %>/edit">Account</a></li>
+
+        <li><a href="/accounts/<%= account.id %>/users/new">Users</a></li>
+      </ul>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">
+            <img class="logo-navbar" src="/../mango.png" alt="Operation Mango">
+            <p class="logo-nav-text">Operation Mango</p>
+          </a>
+          <ul class="right hide-on-med-and-down">
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">
+              <span>Settings</span>
+              <img class="arrow" src="/../scroll-down-arrow-icon.png" alt="Operation Mango">
+            </a></li>
+            <li>
+                <a href="/sessions/delete">
+                  <img class="logout" src="/../logout.png" alt="Logout">
+                </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="custom-nav">
+          <span class="custom-nav-text">Welcome <%= user.first_name %>!</span>
+      </div>
+
+      <div class="main-container">
+        <h2 class="main-title">Users Management</h2>
+        <h1 class="divider"></h1>
+        <div class="my-user-box">
+          <h4 class="box-title">Edit User <span id="username_title"><%= user.username %></span>! </h4>
+          <%# <h1 class="divider"></h1> %>
+          <form id="editing_user" action="/users/edit" method="post">
+            <input type="hidden" id="user_id" name="user_id" value="<%= user._id %>">
+            <div class="input-field col s6">
+              <input id="first_name" name="first_name" type="text" class="validate" value="<%= user.first_name %>">
+              <label for="first_name">First Name</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="last_name" name="last_name" type="text" class="validate"  value="<%= user.last_name %>">
+              <label for="last_name">Last Name</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="username" name="username" type="text" class="validate"  value="<%= user.username %>">
+              <label for="username">Username</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="email" name="email" type="text" class="validate"  value="<%= user.email %>">
+              <label for="email">Email</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="password" name="password" type="password" class="validate">
+              <label for="password">New Password</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="password_confirmation" name="password_confirmation" type="password" class="validate">
+              <label for="password_confirmation">Password Confirmation</label>
+            </div>
+
+            <button class="btn waves-effect waves-light"  type="submit">Update</button>
+          </form>
+        </div>
+        <div class="users-box">
+          <h4 class="box-title">All <%= account.name %> Users</h4>
+          <%# <h1 class="divider"></h1> %>
+          <div class="scroll-table" >
+            <table class="">
+                <thead>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </thead>
+                <tbody>
+                  <%for (var i=0 ; i < users.length ; i++){%>
+                    <tr>
+                      <td><%= users[i].first_name %></td>
+                      <td><%= users[i].last_name %></td>
+                      <td><%= users[i].username %></td>
+                      <td><%= users[i].email %></td>
+                      <td>
+                        <button onclick="callAjax('<%= users[i]._id %>')">Edit</button>
+                         |
+                        <a href="/users/<%= users[i]._id %>/delete"><button>Delete</button></a>
+                      </td>
+                    </tr>
+                  <%}%>
+
+                </tbody>
+            </table>
+          </div>
+
+          <div class="add-user-box">
+            <h1 class="divider"></h1>
+            <h4 class="box-title">Add more:</h4>
+              <% if ((typeof query.e != 'undefined') && (!query.e) ) { %>
+                <p class="errors">
+                  <%= query.e %>
+                </p>
+              <% } %>
+              <form action="/users/account/" method="post">
+                <div class="box-new-users-left">
+                  <div class="input-field col s6">
+                    <input id="acc_first_name" name="acc_first_name" type="text" class="validate" value="">
+                    <label for="acc_first_name">First Name</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="acc_username" name="acc_username" type="text" class="validate"  value="">
+                    <label for="acc_username">Username</label>
+                  </div>
+                </div>
+                <div class="box-new-users-right">
+                  <div class="input-field col s6">
+                    <input id="acc_last_name" name="acc_last_name" type="text" class="validate"  value="">
+                    <label for="acc_last_name">Last Name</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="acc_email" name="acc_email" type="text" class="validate"  value="">
+                    <label for="acc_email">Email</label>
+                  </div>
+                </div>
+                <br>
+                <button class="btn waves-effect waves-light"  type="submit">Add</button>
+              </form>
+
+          </div>
+        </div>
+      </div>
+  </body>
+
+  <main>
+    <br>
+  </main>
+
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container">
+        <p class="center">© 2018 Copyright Operation Mango</p>
+      </div>
+    </div>
+  </footer>
+</html>
