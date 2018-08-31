@@ -21,12 +21,11 @@ body {
   margin: 0 0 10px 0;
 }
 
-
 main {
   flex: 1 0 auto;
 }
 h1, h2, h3, h4, h5{
-  color: #850000;
+  color: #B71C1C;
   margin: 0 0 0 0;
 }
 .custom-nav{
@@ -76,11 +75,12 @@ h1, h2, h3, h4, h5{
 }
 .registration-title{
   margin: 0 0 0 0;
+  color: #C62828;
 }
 
 .logo-text{
   margin-top: 0;
-  color:#850000;
+  color:#B71C1C;
 }
 
 .logo{
@@ -120,15 +120,18 @@ h1, h2, h3, h4, h5{
 
 .nav-wrapper {
     /* background-color: #FFCC22 !important; */
-    /* background-color: #D32F2F !important; */
+    background-color: #B71C1C !important;
     font-size: 14px;
     font-weight: bold;
     padding: 0 50px 0 50px;
   }
+.page-footer {
+  background-color: #B71C1C !important;
+}
 
 .btn{
   display: inline-block;
-  background-color: #850000 !important;
+  background-color: #C62828 !important;
 }
 
 .my-user-box{

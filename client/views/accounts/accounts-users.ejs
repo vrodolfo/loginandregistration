@@ -97,7 +97,7 @@
 
       <div class="main-container">
         <h2 class="main-title">Users Management</h2>
-        <h1 class="divider"></h1>
+        <%# <h1 class="divider"></h1> %>
         <div class="my-user-box">
           <h4 class="box-title">Edit User <span id="username_title"><%= user.username %></span>! </h4>
           <%# <h1 class="divider"></h1> %>
@@ -146,7 +146,7 @@
                 <tbody>
                   <%for (var i=0 ; i < users.length ; i++){%>
                     <tr>
-                      <td><%= users[i].first_name %></td>
+                      <td style=""><%= users[i].first_name %></td>
                       <td><%= users[i].last_name %></td>
                       <td><%= users[i].username %></td>
                       <td><%= users[i].email %></td>
@@ -205,10 +205,10 @@
   </main>
 
   <footer class="page-footer">
-    <div class="footer-copyright">
+    <%# <div class="footer-copyright"> %>
       <div class="container">
         <p class="center">© 2018 Copyright Operation Mango</p>
       </div>
-    </div>
+    <%# </div> %>
   </footer>
 </html>
