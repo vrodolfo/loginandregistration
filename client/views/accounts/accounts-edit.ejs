@@ -1,0 +1,88 @@
+<html>
+  <head>
+      <link rel="icon" href="/../mango.png">
+    <title>Operation Mango</title>
+    <script
+   src="https://code.jquery.com/jquery-3.3.1.min.js"
+   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+   crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/../style.css" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+     <script>
+     $( document ).ready(function() {
+        console.log( "ready!" );
+        $(".dropdown-trigger").dropdown();
+        $(".dropdown-content>li>a").css("background-color", "#e57373");
+        $(".dropdown-content>li>a").css("color", "white");
+
+      });
+
+
+     </script>
+</head>
+  <body>
+      <ul id="dropdown1" class="dropdown-content">
+        <li><a href="/accounts/<%= account.id %>/edit">Account</a></li>
+
+        <li><a href="/accounts/<%= account.id %>/users/new">Users</a></li>
+      </ul>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">
+            <img class="logo-navbar" src="/../mango.png" alt="Operation Mango">
+            <p class="logo-nav-text">Operation Mango</p>
+          </a>
+          <ul class="right hide-on-med-and-down">
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">
+              <span>Settings</span>
+              <img class="arrow" src="/../scroll-down-arrow-icon.png" alt="Operation Mango">
+            </a></li>
+            <li>
+                <a href="/sessions/delete">
+                  <img class="logout" src="/../logout.png" alt="Logout">
+                </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="custom-nav">
+          <span class="custom-nav-text">Welcome <%= user.first_name %>!</span>
+      </div>
+
+      <div class="main-container">
+        <h2 class="main-title">Account Management</h2>
+        <%# <h1 class="divider"></h1> %>
+        <div class="my-user-box">
+          <h4 class="box-title">Edit <span id="username_title"><%= account.name %></span>! </h4>
+          <%# <h1 class="divider"></h1> %>
+          <% if ((typeof error != 'undefined') ) { %>
+            <p class="errors">
+              <%= error %>
+            </p>
+          <% } %>
+          <form id="editing_user" action="/accounts/<%= account.name %>/update" method="post">
+            <div class="input-field col s6">
+              <input id="name" name="name" type="text" class="validate" value="<%= account.name %>">
+              <label for="name">Name</label>
+            </div>
+
+            <button class="btn waves-effect waves-light"  type="submit">Update</button>
+          </form>
+        </div>
+
+      </div>
+  </body>
+
+  <main>
+    <br>
+  </main>
+
+  <footer class="page-footer">
+    <%# <div class="footer-copyright"> %>
+      <div class="container">
+        <p class="center">© 2018 Copyright Operation Mango</p>
+      </div>
+    <%# </div> %>
+  </footer>
+</html>

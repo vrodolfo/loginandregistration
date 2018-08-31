@@ -14,6 +14,17 @@ module.exports = {
 		return res.render('accounts/accounts-new');
 	},
 
+  edit:function(req, res) {
+    console.log(req.params.id);
+    Account.findById(req.params.id , function(err, acc) {
+      if(err){
+          console.log(err);
+          return res.render('accounts/accounts-edit', { error: err });
+        }
+          return res.render('accounts/accounts-edit', { account: acc });
+      });
+	},
+
   usersAll: function(req, res) {
     console.log('Account Controller: usersAll');
     Account.findById(req.params.id , function(err, acc) {

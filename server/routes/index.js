@@ -50,28 +50,21 @@ module.exports = (app) => {
     users.destroy(req, res);
   });
 
-  app.get('/accounts/:id/edit', isAuthenticated, function(req, res) {
-    accounts.edit(req, res);
-  });
-
   app.post('/users/update', isAuthenticated, function(req, res) {
     users.usersUpdate(req, res);
-  });
-
-  app.get('/accounts/:id/users/new', isAuthenticated, function(req, res) {
-    accounts.usersAll(req, res);
-  });
-
-  app.get('/accounts/users/:id/edit', isAuthenticated, function(req, res) {
-    accounts.usersEdit(req, res);
   });
 
   app.get('/users/:id/dashboard', isAuthenticated, function(req, res) {
     users.dashboard(req, res);
   });
 
-  app.post('/sessions', sessions.create);
-  app.get('/sessions/delete', sessions.delete);
+  app.get('/accounts/:id/edit', isAuthenticated, function(req, res) {
+    accounts.edit(req, res);
+  });
+
+  app.get('/accounts/:id/users/new', isAuthenticated, function(req, res) {
+    accounts.usersAll(req, res);
+  });
 
   app.get('/accounts/new', accounts.new);
 
@@ -79,6 +72,13 @@ module.exports = (app) => {
     console.log('create account');
     accounts.create(req, res);
   });
+
+  app.get('/accounts/users/:id/edit', isAuthenticated, function(req, res) {
+    accounts.usersEdit(req, res);
+  });
+
+  app.post('/sessions', sessions.create);
+  app.get('/sessions/delete', sessions.delete);
 
   app.all('**', (req, res) => { res.redirect('/') });
 }
