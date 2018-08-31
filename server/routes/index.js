@@ -11,56 +11,62 @@
 const users     = require('../controllers/users');
 const sessions  = require('../controllers/sessions');
 const accounts  = require('../controllers/accounts');
+const session   = require('express-session');
+
+function isAuthenticated(req, res, next) {
+  if (session.user_id && session.account_id){
+    return next();
+  }
+  res.redirect('/');
+}
 
 module.exports = (app) => {
 
-  app.get('/', function(req, res) {
-    return res.render('index');
+  app.get('/',  function(req, res) {
+    return res.render('index', {query: req.query});
   });
 
-  app.post('/users', function(req, res) {
-    console.log('create');
+  app.post('/users', isAuthenticated, function(req, res) {
     users.create(req, res);
   });
 
-  app.post('/users/account', function(req, res) {
-    console.log('create user to acc');
+  app.post('/users/account', isAuthenticated, function(req, res) {
     users.createUsertoAccount(req, res);
   });
 
-  app.get('/users', function(req, res) {
+  app.get('/users', isAuthenticated, function(req, res) {
     users.list(req, res);
   });
 
-  app.get('/users/new', function(req, res) {
+  app.get('/users/new', isAuthenticated, function(req, res) {
     users.new(req, res);
   });
 
-  app.get('/users/:id', function(req, res) {
+  app.get('/users/:id', isAuthenticated, function(req, res) {
     users.findUser(req, res);
   });
 
-  app.get('/users/:id/delete', function(req, res) {
+  app.get('/users/:id/delete', isAuthenticated, function(req, res) {
     users.destroy(req, res);
   });
 
-  app.get('/accounts/:id/edit', function(req, res) {
+  app.get('/accounts/:id/edit', isAuthenticated, function(req, res) {
     accounts.edit(req, res);
   });
 
-  app.post('/users/update', function(req, res) {
+  app.post('/users/update', isAuthenticated, function(req, res) {
     users.usersUpdate(req, res);
   });
 
-  app.get('/accounts/:id/users/new', function(req, res) {
+  app.get('/accounts/:id/users/new', isAuthenticated, function(req, res) {
     accounts.usersAll(req, res);
   });
 
-  app.get('/accounts/users/:id/edit', function(req, res) {
+  app.get('/accounts/users/:id/edit', isAuthenticated, function(req, res) {
     accounts.usersEdit(req, res);
   });
 
-  app.get('/users/:id/dashboard', function(req, res) {
+  app.get('/users/:id/dashboard', isAuthenticated, function(req, res) {
     users.dashboard(req, res);
   });
 

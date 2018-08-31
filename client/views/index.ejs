@@ -18,9 +18,9 @@
     <div class='login-box'>
       <img class="logo" src="mango.png" alt="Operation Mango">
       <h2 class="logo-text">Operation Mango</h2>
-      <% if (typeof errs != 'undefined' ) { %>
+      <% if ((typeof query.error != 'undefined') && (query.error) ) { %>
           <p class="errors">
-          <%= errs %>
+          <%= query.error %>
           </p>
       <% } %>
       <form action="/sessions" method="post">
